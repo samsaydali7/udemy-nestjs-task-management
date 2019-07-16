@@ -41,17 +41,9 @@ export class TasksService {
   //   }
   //   return found;
   // }
-  // public createTask(createTaskDto: CreateTaskDto): Task {
-  //   const {title, description} = createTaskDto;
-  //   const task: Task = {
-  //     id: uuid(),
-  //     title,
-  //     description,
-  //     status: TaskStatus.OPEN,
-  //   };
-  //   this.tasks.push(task);
-  //   return task;
-  // }
+  public createTask(createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.taskRepository.createTask(createTaskDto);
+  }
   // public updateTaskStatus(id: string, staus: TaskStatus): Task {
   //   const task = this.getTaskById(id);
   //   task.status = staus;

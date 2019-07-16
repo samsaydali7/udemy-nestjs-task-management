@@ -20,11 +20,11 @@ export class TasksController {
   public getTaskById(@Param('id', ParseIntPipe) id: number): Promise<Task> {
     return this.tasksService.getTaskById(id);
   }
-  // @Post()
-  // @UsePipes(ValidationPipe)
-  // public createTask(@Body() createTaskDto: CreateTaskDto): Task {
-  //   return this.tasksService.createTask(createTaskDto);
-  // }
+  @Post()
+  @UsePipes(ValidationPipe)
+  public createTask(@Body() createTaskDto: CreateTaskDto): Promise<Task> {
+    return this.tasksService.createTask(createTaskDto);
+  }
   // @Patch(':id/status')
   // public updateTaskStatus(
   //   @Param('id') id: string,
