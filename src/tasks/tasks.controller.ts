@@ -44,7 +44,10 @@ export class TasksController {
     return this.tasksService.updateTaskStatus(id, status, user);
   }
   @Delete(':id')
-  public deleteTask(@Param('id', ParseIntPipe) id: number): Promise<void> {
-    return this.tasksService.deleteTask(id);
+  public deleteTask(
+    @Param('id', ParseIntPipe) id: number,
+    @GetUser() user: User,
+    ): Promise<void> {
+    return this.tasksService.deleteTask(id, user);
   }
 }
