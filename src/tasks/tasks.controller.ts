@@ -14,8 +14,11 @@ import { User } from '../auth/user.entity';
 export class TasksController {
   constructor(private tasksService: TasksService) {}
   @Get()
-  public getTasks(@Query(ValidationPipe) filterDto: GetTasksFilterDto): Promise<Task[]> {
-    return this.tasksService.getTasks(filterDto);
+  public getTasks(
+    @Query(ValidationPipe) filterDto: GetTasksFilterDto,
+    @GetUser() user: User,
+  ): Promise<Task[]> {
+    return this.tasksService.getTasks(filterDto, user);
   }
   @Get(':id')
   public getTaskById(@Param('id', ParseIntPipe) id: number): Promise<Task> {
